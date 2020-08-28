@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+import web.dto.ResponseToDoDto;
 import web.dto.SaveRequestToDoDto;
 import web.dto.UpdateRequestDto;
 import web.todo.ToDo;
@@ -56,7 +57,7 @@ public class ToDoControllerTest {
 
 
 
-        String url="http://localhost:"+port+"/todo/save";
+        String url="http://localhost:"+port+"/todo/";
 
 
 
@@ -97,7 +98,7 @@ public class ToDoControllerTest {
 
         UpdateRequestDto dto= UpdateRequestDto.builder().content(content).star(star).build();
 
-        String url="http://localhost:"+port+"/todo/update/"+original.getId();
+        String url="http://localhost:"+port+"/todo/"+original.getId();
 
         HttpEntity<UpdateRequestDto>httpEntity=new HttpEntity<>(dto);
 
@@ -120,6 +121,8 @@ public class ToDoControllerTest {
 
 
     }
+
+
 
 
 }
