@@ -23,7 +23,7 @@ public class ToDoRepositoryTest {
         String content="make todo list";
         boolean isSignificant=true;
 
-        toDoRepository.save(ToDo.builder().content(content).isSignificant(isSignificant).build());
+        toDoRepository.save(ToDo.builder().content(content).star(isSignificant).build());
 
         //when
         List<ToDo>list=toDoRepository.findAll();
@@ -34,7 +34,7 @@ public class ToDoRepositoryTest {
 
         assertThat(list.get(0).getContent()).isEqualTo(content);
 
-        assertThat(list.get(0).isSiginificant()).isEqualTo(isSignificant);
+        assertThat(list.get(0).isStar()).isEqualTo(isSignificant);
 
     }
 

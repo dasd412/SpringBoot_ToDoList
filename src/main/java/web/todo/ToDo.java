@@ -23,12 +23,13 @@ public class ToDo {
     private String content;
 
 
-    private boolean isSiginificant;
+    @Column(nullable = false)
+    private boolean star;
 
     @Builder
-    public ToDo(String content, boolean isSignificant){
+    public ToDo(String content, boolean star){
         this.content=content;
-        this.isSiginificant=isSignificant;
+        this.star =star;
     }
 
 
