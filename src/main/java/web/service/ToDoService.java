@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dto.SaveRequestToDoDto;
+import web.dto.UpdateRequestDto;
+import web.todo.ToDo;
 import web.todo.ToDoRepository;
 
 @RequiredArgsConstructor
@@ -21,5 +23,16 @@ public class ToDoService {
     }
 
 
+    @Transactional
+    public Long updateToDo(Long id, UpdateRequestDto dto) {
+        ToDo found=toDoRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("id not found : "+id));
 
+        found.update(dto.getContent(),dto.isStar());
+
+
+
+        return id;
+
+    }
 }

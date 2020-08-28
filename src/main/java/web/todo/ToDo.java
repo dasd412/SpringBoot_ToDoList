@@ -32,6 +32,11 @@ public class ToDo {
         this.star =star;
     }
 
+    public void update(String content, boolean star){
+        this.content=content;
+        this.star=star;
+    }
+
 
 
 }

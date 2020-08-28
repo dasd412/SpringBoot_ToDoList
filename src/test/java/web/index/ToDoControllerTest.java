@@ -7,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import web.dto.SaveRequestToDoDto;
+import web.dto.UpdateRequestDto;
 import web.todo.ToDo;
 import web.todo.ToDoRepository;
 
@@ -79,6 +82,43 @@ public class ToDoControllerTest {
     @After
     public void reInit()throws  Exception{
         toDoRepository.deleteAll();
+    }
+
+
+    @Test
+    public void test_updateToDo()throws Exception{
+
+        //given
+        ToDo original= ToDo.builder().content("original content").star(false).build();
+        toDoRepository.save(original);
+
+        String content="updated content";
+        boolean star=true;
+
+        UpdateRequestDto dto= UpdateRequestDto.builder().content(content).star(star).build();
+
+        String url="http://localhost:"+port+"/todo/update/"+original.getId();
+
+        HttpEntity<UpdateRequestDto>httpEntity=new HttpEntity<>(dto);
+
+        //when
+
+        ResponseEntity<Long>responseEntity=testRestTemplate.exchange(url, HttpMethod.PUT, httpEntity,Long.class);
+
+        //then
+
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+
+
+        List<ToDo>toDos=toDoRepository.findAll();
+
+        assertThat(toDos.get(0).getContent()).isEqualTo(content);
+        assertThat(toDos.get(0).isStar()).isEqualTo(star);
+
+
+
+
     }
 
 

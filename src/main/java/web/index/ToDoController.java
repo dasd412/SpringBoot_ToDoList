@@ -1,10 +1,9 @@
 package web.index;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import web.dto.SaveRequestToDoDto;
+import web.dto.UpdateRequestDto;
 import web.service.ToDoService;
 
 
@@ -23,6 +22,13 @@ public class ToDoController {
 
         return toDoService.saveToDo(dto);
 
+
+    }
+
+    @PutMapping("/todo/update/{id}")
+    public Long updateToDo(@PathVariable Long id, @RequestBody UpdateRequestDto dto){
+
+      return  toDoService.updateToDo(id,dto);
 
     }
 
