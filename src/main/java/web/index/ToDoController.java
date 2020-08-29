@@ -16,7 +16,7 @@ public class ToDoController {
     private final ToDoService toDoService;
 
 
-    @PostMapping("/todo/")
+    @PostMapping("/todo")
     public Long saveToDo( @RequestBody SaveRequestToDoDto dto){
 
 

@@ -22,11 +22,11 @@
         <tbody id="tbody">
 
         {{#todos}}
-        <tr>
-           <button type="button" class="btn btn-dander">O</button>
+        <tr class="tr-list">
 
+            <td><button type="button" class="btn btn-danger" id="btn-delete">○</button></td>
             <td>{{content}}</td>
-            <td>{{star}}</td>
+            <td>☆{{#star}}★{{/star}}</td>
         </tr>
         </tbody>
 
@@ -43,7 +43,7 @@
 </div>
 </form>
 
-<button type="button" class="btn btn-primary">등록</button>
+<button type="button" class="btn btn-primary" id="btn-save">등록</button>
 </div>
 
 {{>layout/footer}}
