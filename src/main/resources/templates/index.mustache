@@ -21,13 +21,29 @@
 
         <tbody id="tbody">
 
+        {{#todos}}
         <tr>
+           <button type="button" class="btn btn-dander">O</button>
 
+            <td>{{content}}</td>
+            <td>{{star}}</td>
         </tr>
         </tbody>
 
+        {{/todos}}
     </table>
 
+</div>
+
+<div id="form">
+<form>
+<div class="form-group" id="form">
+<label for="content">할 일 거리 적기</label>
+    <textarea class="form-control" id="content" placeholder="내용을 입력하세요."></textarea>
+</div>
+</form>
+
+<button type="button" class="btn btn-primary">등록</button>
 </div>
 
 {{>layout/footer}}

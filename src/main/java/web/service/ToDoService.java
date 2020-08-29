@@ -3,11 +3,15 @@ package web.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import web.dto.ListResponseDto;
 import web.dto.ResponseToDoDto;
 import web.dto.SaveRequestToDoDto;
 import web.dto.UpdateRequestDto;
 import web.todo.ToDo;
 import web.todo.ToDoRepository;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -58,5 +62,14 @@ public class ToDoService {
 
 
          return id;
+    }
+
+    @Transactional(readOnly = true)
+    public List<ListResponseDto> findAllToDo() {
+
+        return toDoRepository.findAll().stream().
+                map(ListResponseDto::new).
+                collect(Collectors.toList());
+
     }
 }
