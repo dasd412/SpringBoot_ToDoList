@@ -47,4 +47,16 @@ public class ToDoService {
         return dto;
 
     }
+
+    @Transactional
+    public Long delete(Long id) {
+
+         ToDo found=toDoRepository.findById(id)
+                 .orElseThrow(()->new IllegalArgumentException("not found id "+id));
+
+         toDoRepository.delete(found);
+
+
+         return id;
+    }
 }

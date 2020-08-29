@@ -1,0 +1,26 @@
+.body{
+padding:5px 20px;
+position:absolute;
+
+top:20%;
+left:50%;
+width:600px;
+height:700px;
+margin-left:-220px;
+margin-top:-170px;
+
+background:blue;
+
+}
+
+.top{
+font-size:10px;
+color:white;
+text-align:center;
+}
+
+.tr{
+font-size:20px;
+text-align:center;
+color:white;
+}

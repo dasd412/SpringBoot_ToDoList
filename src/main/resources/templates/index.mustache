@@ -1,13 +1,33 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>To Do List _clone</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+{{>layout/header}}
 
-<body>
-<h1>toDoList</h1>
+<div class="body">
+<div class="top">
+<h1 class="title">오늘 할 일</h1>
 
-</body>
+<div class="clock">
+  <h1>{{time.year}}-{{time.monthValue}}-{{time.dayOfMonth}}-{{time.dayOfWeek}}</h1>
+</div>
+</div>
 
-</html>
+
+    <table class="table table-horizontal table-striped">
+        <thead class=thead-strong"">
+        <tr class="tr">
+            <th>체크</th>
+            <th>할 일</th>
+            <th>중요</th>
+        </tr>
+        </thead>
+
+        <tbody id="tbody">
+
+        <tr>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+{{>layout/footer}}

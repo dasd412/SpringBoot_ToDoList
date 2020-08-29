@@ -41,5 +41,10 @@ public class ToDoController {
         return toDoService.findById(id);
     }
 
+    @DeleteMapping("/todo/{id}")
+    public Long deleteToDo(@PathVariable Long id){
+        return toDoService.delete(id);
+    }
+
 
 }
