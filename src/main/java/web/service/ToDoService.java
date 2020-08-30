@@ -1,5 +1,6 @@
 package web.service;
 
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -69,6 +70,27 @@ public class ToDoService {
         return toDoRepository.findAll().stream().
                 map(ListResponseDto::new).
                 collect(Collectors.toList());
+
+    }
+
+    @Transactional
+    public Long updateStar(Long id) {
+        ToDo target=toDoRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("not found id "+id));
+
+        boolean star;
+
+        if(target.isStar()){
+            star=false;
+        }
+        else{
+            star=true;
+        }
+
+        target.update_star(star);
+
+        return id;
+
 
     }
 }

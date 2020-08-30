@@ -22,16 +22,22 @@ _this.save(data);
 $('#tbody').click(function(e){
 
 const unit=e.target.getAttribute('id');
-
-if(unit=='btn-delete'){
 const id=e.target.getAttribute("value");
+if(unit=='btn-delete'){
+
 _this.delete(id);
+
+
+
+
+}
+else if(unit=='td-content'){
+
+
 }
 else if(unit=='td-star'){
-const value=e.target.getAttribute("value");
 
-_this.updateStar(value);
-
+_this.updateStar(id);
 }
 
 
@@ -76,12 +82,20 @@ alert(JSON.stringify(error));
 
 },
 
-updateStar:function(value){
+updateStar:function(id){
 
 $.ajax({
-type:'POST'
+type:'PUT',
+url:'/todo/star/'+id,
+dataType:'json',
+contentType:'application/json;charset=utf-8'
 
+}).done(function(){
 
+window.location.href='/';
+
+}).fail(function(error){
+alert(JSON.stringify(error));
 });
 
 }

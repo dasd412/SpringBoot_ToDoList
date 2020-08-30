@@ -33,6 +33,12 @@ public class ToDoController {
 
     }
 
+    @PutMapping("/todo/star/{id}")
+    public Long updateStar(@PathVariable Long id){
+
+        return toDoService.updateStar(id);
+    }
+
     @GetMapping("/todo/{id}")
     public ResponseToDoDto findToDo(@PathVariable Long id){
 
