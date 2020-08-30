@@ -4,28 +4,6 @@ init:function(){
 const _this=this;
 
 $('#btn-save').on('click',function(){
-_this.save();
-});
-
-$('#tbody').click(function(e){
-
-const unit=e.target.getAttribute('id');
-if(unit=='btn-delete'){
-const id=e.target.getAttribute("value");
-
-alert(id);
-
-_this.delete(id);
-}
-
-
-
-
-});
-
-},
-
-save:function(){
 
 const data={
 
@@ -33,6 +11,37 @@ content:$('#content').val(),
 star:false
 
 };
+if(data.content==""){
+alert('빈 텍스트는 등록되지 않습니다.');
+}else{
+_this.save(data);
+}
+
+});
+
+$('#tbody').click(function(e){
+
+const unit=e.target.getAttribute('id');
+
+if(unit=='btn-delete'){
+const id=e.target.getAttribute("value");
+_this.delete(id);
+}
+else if(unit=='td-star'){
+const value=e.target.getAttribute("value");
+
+_this.updateStar(value);
+
+}
+
+
+
+});
+
+},
+
+save:function(data){
+
 
 $.ajax({
 type:'POST',
@@ -63,6 +72,16 @@ alert('할 일 거리를 삭제했습니다.');
 window.location.href='/';
 }).fail(function(error){
 alert(JSON.stringify(error));
+});
+
+},
+
+updateStar:function(value){
+
+$.ajax({
+type:'POST'
+
+
 });
 
 }
