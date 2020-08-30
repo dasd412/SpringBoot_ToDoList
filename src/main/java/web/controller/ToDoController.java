@@ -1,4 +1,4 @@
-package web.index;
+package web.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +43,8 @@ public class ToDoController {
 
     @DeleteMapping("/todo/{id}")
     public Long deleteToDo(@PathVariable Long id){
-        return toDoService.delete(id);
+         toDoService.delete(id);
+         return id;
     }
 
 

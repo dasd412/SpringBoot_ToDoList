@@ -1,4 +1,4 @@
-package web.index;
+package web.controller;
 
 import org.junit.After;
 import org.junit.Test;
@@ -12,18 +12,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
-import web.dto.ResponseToDoDto;
 import web.dto.SaveRequestToDoDto;
 import web.dto.UpdateRequestDto;
 import web.todo.ToDo;
 import web.todo.ToDoRepository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 

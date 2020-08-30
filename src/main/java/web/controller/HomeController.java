@@ -1,4 +1,4 @@
-package web.index;
+package web.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

@@ -24,13 +24,15 @@
         {{#todos}}
         <tr class="tr-list">
 
-            <td><button type="button" class="btn btn-danger" id="btn-delete">○</button></td>
+            <td><button type="button" class="btn btn-danger" id="btn-delete" value={{id}}>○</button></td>
             <td>{{content}}</td>
             <td>☆{{#star}}★{{/star}}</td>
+
         </tr>
+        {{/todos}}
         </tbody>
 
-        {{/todos}}
+
     </table>
 
 </div>

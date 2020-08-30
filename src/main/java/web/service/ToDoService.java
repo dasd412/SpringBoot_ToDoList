@@ -53,7 +53,7 @@ public class ToDoService {
     }
 
     @Transactional
-    public Long delete(Long id) {
+    public void delete(Long id) {
 
          ToDo found=toDoRepository.findById(id)
                  .orElseThrow(()->new IllegalArgumentException("not found id "+id));
@@ -61,7 +61,6 @@ public class ToDoService {
          toDoRepository.delete(found);
 
 
-         return id;
     }
 
     @Transactional(readOnly = true)
