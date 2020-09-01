@@ -1,13 +1,13 @@
 {{>layout/header}}
 
 <div class="body">
-<div class="top">
-<h1 class="title">오늘 할 일</h1>
+    <div class="top">
+        <h1 class="title">오늘 할 일</h1>
 
-<div class="clock">
-  <h1>{{time.year}}-{{time.monthValue}}-{{time.dayOfMonth}}-{{time.dayOfWeek}}</h1>
-</div>
-</div>
+        <div class="clock">
+            <h1>{{time.year}}-{{time.monthValue}}-{{time.dayOfMonth}}-{{time.dayOfWeek}}</h1>
+        </div>
+    </div>
 
 
     <table class="table table-horizontal table-striped">
@@ -22,30 +22,32 @@
         <tbody id="tbody">
 
         {{#todos}}
-        <tr class="tr-list">
+            <tr class="tr-list">
 
-            <td><button type="button" class="btn btn-danger" id="btn-delete" value={{id}}>○</button></td>
-            <td id="td-content" value={{id}}>{{content}}</td>
-            <td id="td-star" value={{id}}>{{^star}}☆{{/star}}{{#star}}★{{/star}}</td>
+                <td><button type="button" class="btn btn-danger" id="btn-delete" value={{id}}>○</button></td>
+                <td id="td-content" value={{id}}>{{content}}</td>
+                <td id="td-star" value={{id}}>{{^star}}☆{{/star}}{{#star}}★{{/star}}</td>
 
-        </tr>
+            </tr>
         {{/todos}}
         </tbody>
 
 
     </table>
 
+    <form class="form-inline" id="form">
+        <div class="form-group">
+
+            <div class="input-group">
+
+                <input type="text" class="form-control" id="content" placeholder="내용을 입력하세요.">
+
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" id="btn-save">등록</button>
+    </form>
+
 </div>
 
-<div id="form">
-<form>
-<div class="form-group" id="form">
-<label for="content">할 일 거리 적기</label>
-    <textarea class="form-control" id="content" placeholder="내용을 입력하세요."></textarea>
-</div>
-</form>
-
-<button type="button" class="btn btn-primary" id="btn-save">등록</button>
-</div>
 
 {{>layout/footer}}
